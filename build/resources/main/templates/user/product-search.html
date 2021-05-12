@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>E Store - eCommerce HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="eCommerce HTML Template Free Download" name="keywords">
+    <meta content="eCommerce HTML Template Free Download" name="description">
+    <link th:href="@{/user/img/favicon.ico}" rel="icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
+          rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick.css}" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick-theme.css}" rel="stylesheet">
+    <link th:href="@{/user/css/style.css}" rel="stylesheet">
+    <style>
+        #for-message {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+<nav th:replace="user/layout::header"></nav>
+
+<!-- Product List Start -->
+<div class="product-view">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-view-top">
+                            <!--+++++++++++++++++++++++++++++SEARCH START+++++++++++++++++++++++++++-->
+                            <form class="row" id="search-form">
+                                <div class="col-md-3">
+                                    <div class="product-search">
+                                        <input type="text" placeholder="Tên" id="name">
+                                        <button><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="product-search">
+                                        <p style="line-height:30px;"><strong>Giá từ</strong></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="product-search">
+                                        <input type="text" placeholder="VNĐ" id="priceFrom">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="product-search">
+                                        <p style="line-height:30px;"><strong>đến</strong></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="product-search">
+                                        <input type="text" placeholder="VNĐ" id="priceTo">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="product-search">
+                                        <select name="" id="categoryId" class="form-control">
+                                            <option value="">Thể loại</option>
+                                            <option th:each="category:${categories}" th:value="${category.id}"
+                                                    th:text="${category.name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="product-search">
+                                        <select name="" id="brandId" class="form-control">
+                                            <option value="">Hãng sản xuất</option>
+                                            <option th:each="brand:${brands}" th:value="${brand.id}"
+                                                    th:text="${brand.name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="product-search">
+                                        <select name="" id="sizeId" class="form-control">
+                                            <option value="">Kích cỡ</option>
+                                            <option th:each="size:${sizes}" th:value="${size.id}"
+                                                    th:text="${size.name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="product-search">
+                                        <select name="" id="colorId" class="form-control">
+                                            <option value="">Màu sắc</option>
+                                            <option th:each="color:${colors}" th:value="${color.id}"
+                                                    th:text="${color.name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn"><i class="fa fa-search"></i> Tìm kiếm</button>
+                                </div>
+                            </form>
+                            <!--+++++++++++++++++++++++++++++SEARCH END+++++++++++++++++++++++++++-->
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="for-show-products">
+                    <div class="col-md-4" th:each="cloth:${clothes}">
+                        <div class="product-item">
+                            <div class="product-title" style="height: 120px">
+                                <a th:href="@{'/product/detail/'+${cloth.id}}" th:text="${cloth.clothesDetail.name}" style="height: 78px; width: 233px;"></a>
+                                <div class="ratting">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="product-image" style="height: 300px;">
+                                <a href=""
+                                   th:if="${cloth.clothesDetail.sources.size()>0}">
+                                    <img th:src="@{'/user/image/'+${cloth.clothesDetail.sources[0]}}"
+                                         alt="Product Image">
+                                </a>
+                                <div class="product-action">
+                                    <a class="button-add-to-cart" th:id="${cloth.id}" href=""><i
+                                            class="fa fa-cart-plus"></i></a>
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <a th:href="@{'/product/detail/'+${cloth.id}}"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3 th:text="${cloth.clothesDetail.price+' đồng'}"></h3>
+                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua hàng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Side Bar Start -->
+            <div th:replace="user/layout::side-bar"></div>
+            <!-- Side Bar End -->
+        </div>
+    </div>
+</div>
+<!-- Product List End -->
+
+<!-- Brand Start -->
+<div class="brand">
+    <div class="container-fluid">
+        <div class="brand-slider">
+            <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-2.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-3.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-4.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-5.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-6.png" alt=""></div>
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+
+<div th:replace="user/layout::footer"></div>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<!--for show message-->
+<div id="for-message"></div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/user/lib/easing/easing.min.js}"></script>
+<script th:src="@{/user/lib/slick/slick.min.js}"></script>
+<script th:src="@{/user/js/main.js}"></script>
+<script th:src="@{/js/user-product.js}"></script>
+<script th:src="@{/js/cart.js}"></script>
+</body>
+</html>

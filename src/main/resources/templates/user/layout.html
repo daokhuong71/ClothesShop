@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>XXX</title>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="header">
+    <!-- Top bar Start -->
+    <div class="top-bar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <i class="fa fa-envelope"></i>
+                    Quangkhuong59@gmail.com
+                </div>
+                <div class="col-sm-6">
+                    <i class="fa fa-phone-alt"></i>
+                    0976714384
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top bar End -->
+
+    <!-- Nav Bar Start -->
+    <div class="nav">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <a href="#" class="navbar-brand">MENU</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto">
+                        <a href="/" class="nav-item nav-link">Trang chủ</a>
+                        <a href="/product" class="nav-item nav-link">Sản phẩm</a>
+                        <a href="/cart" class="nav-item nav-link">Giỏ hàng</a>
+                        <a href="/checkout" class="nav-item nav-link">Thanh toán</a>
+                        <a href="/order" class="nav-item nav-link">Đơn hàng</a>
+                        <a href="/account" class="nav-item nav-link">Tài khoản</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Shop</a>
+                            <div class="dropdown-menu">
+                                <a href="#wishlist" class="dropdown-item">Yêu thích</a>
+                                <a th:href="@{/gioithieu}" class="dropdown-item">Thông tin shop</a>
+                                <a href="#" class="dropdown-item">Liên hệ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                               th:text="${user==null?'Đăng nhập / Đăng ký':user.name}">User Account</a>
+                            <div class="dropdown-menu">
+                                <a th:href="${user==null?'/login':'/logout'}" class="dropdown-item"
+                                   th:text="${user==null?'Đăng nhập':'Đăng xuất'}"></a>
+                                <a th:href="@{/register}" class="dropdown-item">Đăng ký</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- Bottom Bar Start -->
+    <div class="bottom-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <div class="logo">
+                        <a href="/">
+                            <img th:src="@{/user/img/logo.png}" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                <form class="col-md-6" th:action="@{/product/name-search}" method="post">
+                    <div class="search">
+                        <input type="text" placeholder="Tìm sản phẩm" name="name">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+                <div class="col-md-3">
+                    <div class="user">
+                        <a class="btn wishlist">
+                            <i class="fa fa-heart"></i>
+                            <span>(0)</span>
+                        </a>
+                        <a href="/cart" class="btn cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span id="for-cart-size" th:if="${current_cart!=null}"
+                                  th:text="${'('+current_cart.cartDetails.size()+')'}"></span>
+                            <span th:if="${current_cart==null}">(0)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bottom Bar End -->
+
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-wrap">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="/product">Sản phẩm</a></li>
+                <!--<li class="breadcrumb-item"><a href="#">Products</a></li>
+                <li class="breadcrumb-item ">Login & Register</li>-->
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+</div>
+<!-- Side Bar Start -->
+<div class="col-lg-4 sidebar" th:fragment="side-bar">
+    <div class="sidebar-widget category">
+        <h2 class="title">Thể loại</h2>
+        <nav class="navbar bg-light">
+            <ul class="navbar-nav">
+                <li class="nav-item" th:each="category:${categories}">
+                    <a class="nav-link" th:href="@{'/product/category-search/'+${category.id}}"><i
+                            class="fa fa-tshirt"></i><span th:text="${category.name}"></span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="sidebar-widget widget-slider">
+        <div class="sidebar-slider normal-slider">
+            <div class="product-item" th:each="cloth:${rightClothes}">
+                <div class="product-title">
+                    <a href="#" th:text="${cloth.clothesDetail.name}"></a>
+                    <div class="ratting">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="product-image">
+                    <a href=""
+                       th:if="${cloth.clothesDetail.sources.size()>0}">
+                        <img th:src="@{'/user/image/'+${cloth.clothesDetail.sources[0]}}"
+                             alt="Product Image">
+                    </a>
+                    <div class="product-action">
+                        <a class="button-add-to-cart" th:id="${cloth.id}" href=""><i
+                                class="fa fa-cart-plus"></i></a>
+                        <a href="#"><i class="fa fa-heart"></i></a>
+                        <a th:href="@{'/product/detail/'+${cloth.id}}"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="product-price">
+                    <h3 th:text="${cloth.clothesDetail.price+' đồng'}"></h3>
+                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-widget brands">
+        <h2 class="title">Hãng sản xuất</h2>
+        <ul>
+            <li th:each="brand:${brands}"><a th:href="@{'/product/brand-search/'+${brand.id}}" th:text="${brand.name}">Nulla </a><span></span></li>
+        </ul>
+    </div>
+</div>
+<!-- Side Bar End -->
+<div th:fragment="footer">
+    <!-- Footer Start -->
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h2>Get in Touch</h2>
+                        <div class="contact-info">
+                            <p><i class="fa fa-envelope"></i>Quangkhuong59@gmail.com</p>
+                            <p><i class="fa fa-phone"></i>0976714384</p>
+                            <p><i class="fa fa-map-marker"></i>Nguyên Xá, Từ Liêm, Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h2>Follow Us</h2>
+                        <div class="contact-info">
+                            <div class="social">
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/khuong.dao.988"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/rain070198/"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/rain070198/"><i class="fab fa-instagram"></i></a>
+                                <a href=""><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h2>Company Info</h2>
+                        <ul>
+                            <li><a th:href="@{/gioithieu}">Giới thiệu</a></li>
+                            <li><a th:href="@{/chinhsach}">Chính sách bảo mật</a></li>
+                            <li><a th:href="@{/chinhsachdoihang}">Chính sách đổi hàng</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h2>Purchase Info</h2>
+                        <ul>
+                            <li><a th:href="@{/paymentpolicy}">Chính sách thanh toán</a></li>
+                            <li><a th:href="@{/giaohang}">Chính sách giao hàng</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+<!--            <div class="row payment align-items-center">-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="payment-method">-->
+<!--                        <h2>We Accept:</h2>-->
+<!--                        <img src="img/payment-method.png" alt="Payment Method"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="payment-security">-->
+<!--                        <h2>Secured By:</h2>-->
+<!--                        <img src="img/godaddy.svg" alt="Payment Security"/>-->
+<!--                        <img src="img/norton.svg" alt="Payment Security"/>-->
+<!--                        <img src="img/ssl.svg" alt="Payment Security"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Footer Bottom Start -->
+<!--    <div class="footer-bottom">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-6 copyright">-->
+<!--                    <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-6 template-by">-->
+<!--                    <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Footer Bottom End -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.472514839281!2d105.73733241538983!3d21.05378189229845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454f9e9e262b5%3A0x25e3f123a9adbc4!2zNjAgUGjhu5EgTmd1ecOqbiBYw6EsIE5ndXnDqm4gWMOhLCBU4burIExpw6ptLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1620118078358!5m2!1svi!2s" width="1400" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</body>
+</html>

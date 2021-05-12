@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>E Store - eCommerce HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="eCommerce HTML Template Free Download" name="keywords">
+    <meta content="eCommerce HTML Template Free Download" name="description">
+    <link th:href="@{/user/img/favicon.ico}" rel="icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
+          rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick.css}" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick-theme.css}" rel="stylesheet">
+    <link th:href="@{user/css/style.css}" rel="stylesheet">
+    <style>
+        #for-message {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+<nav th:replace="user/layout::header"></nav>
+<div class="cart-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12" style="font-family: 'Source Code Pro'; text-align: justify-all">
+                <h1>CHÍNH SÁCH GIAO HÀNG</h1>
+                <h2>Để chi ân Quý khách đã mua sắm tại OMEN, cửa hàng sẽ miễn phí hoàn toàn tiền giao hàng cho quý khách</h2>
+                <ol type="A">
+                    <li><h3>Phí Vận Chuyển</h3></li>
+                <h4>Khu vực TP.HANOI:</h4>
+                    <p>- Nội Thành: Các quận Cầu Giấy, Ba Đình, Đống Đa, Hà Đông, Hoàn Kiếm, Hoàng Mai, Long Biên, Từ Liêm, Tây Hồ, Thanh Xuân</p>
+                    <p>- Ngoại Thành: Các quận - huyện : Ba Vì, Chương Mỹ, Đan Phượng, Đông Anh, Hoài Đức, ....</p>
+                    <i>* Nội thành HANOI áp dụng gói ship hẹn giờ theo yêu cầu khách hàng, do nhân viên của OMEN trực tiếp giao hàng; Các khu vực còn lại sẽ ship bằng dịch vụ của công ty chuyển phát nhanh Giao hàng nhanh.</i>
+                    <li><h3>Thời gian giao hàng:</h3></li>
+                    <p>Thời gian vận chuyển hàng thường mất từ 2 - 3 ngày làm việc (không tính thứ bảy, chủ nhật hay các ngày lễ tết).</p>
+                    <p>Chỉ tiêu thời gian trên được tính đến trung tâm tỉnh, thành phố của khách hàng,  Nếu khách hàng ở tại Huyện, Xã cộng thêm 1 – 2 ngày (tùy vào nơi đến).</p>
+                    <p><i>* Việc giao hàng được thực hiện trong giờ hành chính.</i></p>
+                    <i>* Khi nhận hàng quý khách cần xem lại mặt hàng vừa nhận, nếu mặt hàng vừa giao không đúng theo yêu cầu của quý khách, quý khách có thể từ chối nhận hàng.</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer Start -->
+<div th:replace="user/layout::footer"></div>
+<div id="for-message"></div>
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{js/cart.js}"></script>
+<script th:src="@{user/lib/easing/easing.min.js}"></script>
+<script th:src="@{user/lib/slick/slick.min.js}"></script>
+<script th:src="@{user/js/main.js}"></script>
+<script th:src="@{js/user-product.js}"></script>
+<script th:src="@{js/cart.js}"></script>
+</body>
+</html>

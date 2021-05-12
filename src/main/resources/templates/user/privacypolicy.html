@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>E Store - eCommerce HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="eCommerce HTML Template Free Download" name="keywords">
+    <meta content="eCommerce HTML Template Free Download" name="description">
+    <link th:href="@{/user/img/favicon.ico}" rel="icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
+          rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick.css}" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick-theme.css}" rel="stylesheet">
+    <link th:href="@{user/css/style.css}" rel="stylesheet">
+    <style>
+        #for-message {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+<nav th:replace="user/layout::header"></nav>
+<div class="cart-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12" style="font-family: 'Source Code Pro'; text-align: justify-all">
+                <h1 style="text-align: center">Chính sách bảo mật</h1>
+                <ol>
+                    <li>Mục đích và phạm vi thu thập thông tin</li>
+                        <p>- Chúng tôi thu thập thông tin từ bạn khi bạn đặt hàng trên trang web hoặc liên hệ email, điện thoại với chúng tôi. Bất kỳ thông tin chúng tôi thu thập từ bạn có thể được sử dụng một trong những cách sau đây:</p>
+                        <p>+ Để cải thiện trang web của chúng tôi (Chúng tôi liên tục cố gắng để cải thiện các dịch vụ trang web của chúng tôi dựa trên các thông tin và phản hồi chúng tôi nhận được từ bạn)</p>
+                        <p>+ Để cải thiện dịch vụ khách hàng (Thông tin của bạn sẽ giúp chúng tôi đáp ứng hiệu quả hơn yêu cầu dịch vụ khách hàng và nhu cầu hỗ trợ của bạn)</p>
+                        <p>+ Để xử lý các giao dịch</p>
+                        <p>+ Địa chỉ email mà bạn cung cấp khi xử lý đơn hàng, có thể được sử dụng để gửi cho bạn thông tin và cập nhật liên quan đến đặt hàng của bạn, ngoài việc tiếp nhận tin tức thường xuyên, cập nhật, sản phẩm hoặc dịch vụ liên quan đến thông tin</p>
+
+                    <li>Phạm vi sử dụng thông tin</li>
+                        <p>Omenshop.com sử dụng thông tin khách hàng trong trường hợp thông báo đơn hàng đến với khách hàng. Không sử dụng thông tin khách hàng cho các mục đích khác mà chưa được sự đồng ý của khách hàng.</p>
+
+                    <li>Thời gian lưu trữ thông tin</li>
+                        <p>Omenshop.com lưu trữ thông tin khách hàng, đơn hàng nhằm để đối chiếu khi có phát sinh vấn đề xảy ra, không lưu trữ thông tin khác, nhạy cảm của khách hàng như số điện thoại, thông tin địa chỉ..v.v..</p>
+
+                    <li>Địa chỉ của đơn vị thu thập và quản lý thông tin cá nhân</li>
+                    <p>Omenshop.com lưu trữ thông tin khách hàng thông qua việc khách hàng email đặt hàng, không yêu cầu khách hàng phải để lại thông tin nếu chưa được sự đồng ý.</p>
+
+                <li>Phương tiện và công cụ để người dùng tiếp cận và điều chỉnh<</li>
+                    <p>Khách hàng hoàn toàn có thể yêu cầu 4menshop.com cung cấp hoặc xóa bỏ thông tin của chính mình nếu có nhu cầu, 4MEN hoàn toàn không sử dụng hoặc chỉnh sửa thông tin khách hàng.</p>
+
+                <li>Cam kết bảo mật thông tin cá nhân khách hàng</li>
+                    <p>- Thông tin của bạn, dù công hay tư, sẽ không được bán, trao đổi, chuyển nhượng, hoặc để lộ cho bất kỳ công ty khác cho bất kỳ lý do nào, mà không có sự đồng ý của bạn</p>
+                    <p>- Tất cả các thông tin nhạy cảm chỉ có thể truy cập bởi những người được ủy quyền có quyền truy cập và được yêu cầu để giữ cho các thông tin bí mật.</p>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer Start -->
+<div th:replace="user/layout::footer"></div>
+<div id="for-message"></div>
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{js/cart.js}"></script>
+<script th:src="@{user/lib/easing/easing.min.js}"></script>
+<script th:src="@{user/lib/slick/slick.min.js}"></script>
+<script th:src="@{user/js/main.js}"></script>
+<script th:src="@{js/user-product.js}"></script>
+<script th:src="@{js/cart.js}"></script>
+</body>
+</html>

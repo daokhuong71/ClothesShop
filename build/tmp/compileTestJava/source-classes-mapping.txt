@@ -1,0 +1,2 @@
+project/clothes_shop/ClothesShopApplicationTests.java
+ project.clothes_shop.ClothesShopApplicationTests

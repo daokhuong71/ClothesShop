@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>E Store - eCommerce HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="eCommerce HTML Template Free Download" name="keywords">
+    <meta content="eCommerce HTML Template Free Download" name="description">
+    <link th:href="@{/user/img/favicon.ico}" rel="icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
+          rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick.css}" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick-theme.css}" rel="stylesheet">
+    <link th:href="@{user/css/style.css}" rel="stylesheet">
+    <style>
+        #for-message {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+<nav th:replace="user/layout::header"></nav>
+<div class="cart-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12" style="font-family: 'Source Code Pro'; text-align: justify-all">
+                <h1>Chính sách đổi hàng</h1>
+                <img th:src="@{/user/img/chinhsach.jpg}">
+                <h2>LƯU Ý: CÁCH THỨC ĐỔI HÀNG ĐỐI VỚI KHÁCH MUA HÀNG ONLINE</h2>
+                    <p>B1: Quý khách vui lòng gọi về SĐT: 0976714384 để thông báo</p>
+                    <p>B2: Gửi hàng về địa chỉ: Số nhà 10, Ngõ 60, Nguyên Xá, Từ Liêm, Hà Nội</p>
+                    <p>B3: Sau khi nhận được sản phẩm, OMEN sẽ kiểm tra và đổi lại sản phẩm khác cho quý khách.</p>
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer Start -->
+<div th:replace="user/layout::footer"></div>
+<div id="for-message"></div>
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{js/cart.js}"></script>
+<script th:src="@{user/lib/easing/easing.min.js}"></script>
+<script th:src="@{user/lib/slick/slick.min.js}"></script>
+<script th:src="@{user/js/main.js}"></script>
+<script th:src="@{js/user-product.js}"></script>
+<script th:src="@{js/cart.js}"></script>
+</body>
+</html>

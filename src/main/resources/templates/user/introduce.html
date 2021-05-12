@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>E Store - eCommerce HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="eCommerce HTML Template Free Download" name="keywords">
+    <meta content="eCommerce HTML Template Free Download" name="description">
+    <link th:href="@{/user/img/favicon.ico}" rel="icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap"
+          rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick.css}" rel="stylesheet">
+    <link th:href="@{/user/lib/slick/slick-theme.css}" rel="stylesheet">
+    <link th:href="@{user/css/style.css}" rel="stylesheet">
+    <style>
+        #for-message {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+<nav th:replace="user/layout::header"></nav>
+<div class="cart-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12" style="font-family: 'Source Code Pro'; text-align: center">
+                <h1 style="color: indianred; text-align: center">GIỚI THIỆU OMEN</h1>
+                <p>Nhận thấy tiềm năng cực lớn của thị trường online nói chung cũng như thị trường thời trang nói riêng, chúng tôi đã tạo lên <span>SHOP THƠI TRANG OMEN</span> nhằm đáp ứng nhu cầu thời trang cho giới nam.</p>
+                <h2>SỨ MỆNH</h2>
+                <p>Không ngừng sáng tạo và tỉ mỉ từ công đoạn sản xuất đến các khâu dịch vụ, nhằm mang đến cho Quý Khách Hàng những trải nghiệm mua sắm đặc biệt nhất: sản phẩm chất lượng - dịch vụ hoàn hảo - xu hướng thời trang mới mẻ và tinh tế. Thông qua các sản phẩm thời trang, OMEN luôn mong muốn truyền tải đến bạn những thông điệp tốt đẹp cùng với nguồn cảm hứng trẻ trung và tích cực.</p>
+                <h2>TẦM NHÌN</h2>
+                <p>Với mục tiêu xây dựng và phát triển những giá trị bền vững, trong 10 năm tới, OMEN sẽ trở thành thương hiệu dẫn đầu về thời trang phái mạnh trên thị trường Việt Nam.</p>
+                <h2>THÔNG ĐIỆP OMEN GỬI ĐẾN BẠN</h2>
+                <p>OMEN muốn truyền cảm hứng tích cực đến các chàng trai: Việc mặc đẹp rất quan trọng, nó thể hiện được cá tính, sự tự tin và cả một phần lối sống, cách suy nghĩ của bản thân. Mặc thanh lịch, sống thanh lịch.</p>
+
+                <i>Chọn 4MEN, bạn đang lựa chọn sự hoàn hảo cho điểm nhấn thời trang của chính mình!</i>
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer Start -->
+<div th:replace="user/layout::footer"></div>
+<div id="for-message"></div>
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{js/cart.js}"></script>
+<script th:src="@{user/lib/easing/easing.min.js}"></script>
+<script th:src="@{user/lib/slick/slick.min.js}"></script>
+<script th:src="@{user/js/main.js}"></script>
+<script th:src="@{js/user-product.js}"></script>
+<script th:src="@{js/cart.js}"></script>
+</body>
+</html>
